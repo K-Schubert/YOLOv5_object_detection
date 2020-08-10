@@ -1,2 +1,2 @@
-# YOLO_v5_object_dection
+# YOLO_v5_object_detection
 Testing out YOLO (v5)
