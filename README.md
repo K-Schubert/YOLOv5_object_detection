@@ -13,7 +13,7 @@ Followed Ultralytics tutorial (https://github.com/ultralytics/yolov5/wiki/Train-
 I put together a scraper to get images from https://www.ornitho.ch/, a swiss birding database. The images are classified by species (nc=600).
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/mosaic.jpg">
+  <img width="460" height="200" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/mosaic.jpg">
 </p>
 
 ### Modelling Approach
