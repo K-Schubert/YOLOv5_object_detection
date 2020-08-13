@@ -1,8 +1,13 @@
 import os
 from shutil import copyfile
 import glob
-
 from birds import BirdScraper
+
+'''
+This module allows to find the main species, create a dir for each of them and move all the 
+sub-species images to the main species directory.
+'''
+
 
 bird = BirdScraper()
 

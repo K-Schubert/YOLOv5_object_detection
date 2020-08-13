@@ -8,7 +8,12 @@ from fastai.vision import download_images
 import urllib.request
 from bs4 import BeautifulSoup as BS
 
-class DownloadImages():
+'''
+This module allows to scrap bird images from www.ornitho.ch and download them into separate species folders.
+'''
+
+
+class BirdScraper():
 
 	def __init__(self):
 		self.species_names = self.get_species_names()
@@ -81,7 +86,7 @@ class DownloadImages():
 			with open(path+folder+file, 'r') as inp, open(path+folder+temp_csv_file, 'w') as out:
 				writer = csv.writer(out)
 				for row in csv.reader(inp):
-					if row and '2020' in str(row):
+					if row and any(yr in str(row) for yr in ['2020', '2019', '2018', '2017']):
 						writer.writerow(row)
 
 			os.remove(path+folder+file)
@@ -98,7 +103,7 @@ class DownloadImages():
 
 if __name__ == '__main__':
 
-	bird = DownloadImages()
+	bird = BirdScraper()
 
 	driver = webdriver.Chrome()
 
