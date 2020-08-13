@@ -12,6 +12,10 @@ Followed Ultralytics tutorial (https://github.com/ultralytics/yolov5/wiki/Train-
 
 I put together a scraper to get images from https://www.ornitho.ch/, a swiss birding database. The images are classified by species (nc=600).
 
+<p align="center">
+  <img width="460" height="300" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/mosaic.jpg">
+</p>
+
 ### Modelling Approach
 
 I started by merging the sub-species into the main species (eg. 'Aigle botté', 'Aigle criard', 'Aigle de Bonelli go into the class 'Aigle') to reduce the number of classes (nc_merged=208). Then an ensemble yolov5 model was trained on this merged dataset.
