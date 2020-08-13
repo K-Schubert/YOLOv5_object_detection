@@ -11,7 +11,7 @@ n_images = 3
 image_dirs = os.listdir("../data/birds/")[1:4]
 sampled_dirs = random.sample(image_dirs, n_images)
 
-fig, axs = plt.subplots(3,3,figsize=(6,6))
+fig, axs = plt.subplots(1,3,figsize=(6,2))
 
 axs = axs.ravel()
 
