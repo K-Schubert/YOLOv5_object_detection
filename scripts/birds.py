@@ -9,6 +9,7 @@ from fastai.vision import download_images
 import urllib.request
 from bs4 import BeautifulSoup as BS
 import shutil
+import glob
 
 '''
 This module allows to scrap bird images from www.ornitho.ch and download them into separate species folders.
@@ -84,53 +85,59 @@ class BirdScraper():
 		for species in species_list:
 			
 			folder = species + "/"
-			file = os.listdir(path + folder)
 
-			# Check for hidden .DS_Store file
-			if len(file) > 1:
-				file = file[1]
-			else:
-				file = file[0]
+			try:
+				if not glob.glob(f'{path}{folder}/*.jpg'):
+					file = os.listdir(path + folder)
 
-			temp_csv_file = file[:-4] + '_tmp' + file[-4:]
-			
-			with open(path+folder+file, 'r') as inp, open(path+folder+temp_csv_file, 'w') as out:
-				writer = csv.writer(out)
-				for row in csv.reader(inp):
-					if row and any([yr in str(row) for yr in yrs]):
-						writer.writerow(row)
+					# Check for hidden .DS_Store file
+					if len(file) > 1:
+						file = file[1]
+					else:
+						file = file[0]
 
-			os.remove(path+folder+file)
-			os.rename(path+folder+temp_csv_file, path+folder+file)
+					temp_csv_file = file[:-4] + '_tmp' + file[-4:]
+					
+					with open(path+folder+file, 'r') as inp, open(path+folder+temp_csv_file, 'w') as out:
+						writer = csv.writer(out)
+						for row in csv.reader(inp):
+							if row and any([yr in str(row) for yr in yrs]):
+								writer.writerow(row)
 
-			# If csv file has specific urls, delete dir with sub-species
-			# Some species don't have images so the scraper dls images of
-			# all species mixed. The pattern of urls in this scenario is
-			# detected and these species are removed.
+					os.remove(path+folder+file)
+					os.rename(path+folder+temp_csv_file, path+folder+file)
 
-			with open(path+folder+file,'r') as inp:
-				existingLines = [line for line in csv.reader(inp)]
-			
-			check1 = any([check[0] in line for line in existingLines])
-			check2 = any([check[1] in line for line in existingLines])
-			#check3 = any([check[2] in line for line in existingLines])
-			#check4 = any([check[3] in line for line in existingLines])
-			#check5 = any([check[4] in line for line in existingLines])
+					# If csv file has specific urls, delete dir with sub-species
+					# Some species don't have images so the scraper dls images of
+					# all species mixed. The pattern of urls in this scenario is
+					# detected and these species are removed.
 
-			#if check1 and check2 and check3 and check4 and check5:
-			if check1 and check2:
-				shutil.rmtree(path+folder)
-				#continue
-			else:
-				# Check nb of urls per species
-				with open(path+folder+file, 'r') as fp:
-					reader = csv.reader(fp)
-					print(f'nb of urls for {species}: ', len(list(reader)))
+					with open(path+folder+file,'r') as inp:
+						existingLines = [line for line in csv.reader(inp)]
+					
+					check1 = any([check[0] in line for line in existingLines])
+					check2 = any([check[1] in line for line in existingLines])
+					#check3 = any([check[2] in line for line in existingLines])
+					#check4 = any([check[3] in line for line in existingLines])
+					#check5 = any([check[4] in line for line in existingLines])
 
-				# Download images
-				download_images(path+folder+file, path+folder, max_pics=n_images)
-				print(f'nb of downloaded images for {species}: ', len(os.listdir(path+folder))-1)
-				time.sleep(30)
+					#if check1 and check2 and check3 and check4 and check5:
+					if check1 and check2:
+						shutil.rmtree(path+folder)
+						#continue
+					else:
+						# Check nb of urls per species
+						with open(path+folder+file, 'r') as fp:
+							reader = csv.reader(fp)
+							print(f'nb of urls for {species}: ', len(list(reader)))
+
+						# Download images
+						download_images(path+folder+file, path+folder, max_pics=n_images)
+						print(f'nb of downloaded images for {species}: ', len(os.listdir(path+folder))-1)
+						time.sleep(30)
+
+			except FileNotFoundError:
+				continue
 
 	def enable_download_in_headless_chrome(self, download_dir):
 	    
@@ -154,7 +161,7 @@ if __name__ == '__main__':
 	# driver = webdriver.Chrome(options=option)
 
 	# 57, 368, 479, 541 missing
-	species_list = bird.species_names[542:]
+	species_list = bird.species_names
 	for species in species_list:
 		bird.urls_to_csv(driver, species)
 		species = species.replace(' ', '_')
@@ -164,6 +171,6 @@ if __name__ == '__main__':
 	
 	driver.quit()
 
-	species_list = os.listdir('../data/birds/')[1:]
-	bird.download_images(species_list[183:540], n_images=100)
+	# species_list = os.listdir('../data/birds/')[1:]
+	# bird.download_images(species_list, n_images=100)
 
