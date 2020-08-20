@@ -12,7 +12,7 @@ Followed Ultralytics tutorial (https://github.com/ultralytics/yolov5/wiki/Train-
 
 The project intends to build an image detector and classifier for birds while exploring the yolov5 model.
 
-I put together a scraper to get images from https://www.ornitho.ch/, a swiss birding database. The images are classified by species (nc=537) and the names can be found in ´´´species.txt´´´.
+I put together a scraper to get images from https://www.ornitho.ch/, a swiss birding database. The images are classified by species (nc=537) and the names can be found in ```species.txt```.
 
 
 
