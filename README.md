@@ -31,6 +31,6 @@ The training data was created using https://labelbox.com/ (to draw the bounding 
 A quick training of a yolov5s model gives the following prediction. 
 
 <p align="center">
-  <img width="460" height="460" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/yolov5s_5epochs_accenteur.jpg">
-  <img width="460" height="460" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/yolov5s_5epochs_aigle.jpg">
+  <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/yolov5s_5epochs_accenteur.jpg">
+  <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/yolov5s_5epochs_aigle.jpg">
 </p>
