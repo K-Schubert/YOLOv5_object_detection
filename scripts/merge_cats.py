@@ -11,15 +11,15 @@ sub-species images to the main species directory.
 
 bird = BirdScraper()
 
-main_cat = set([s.split(' ', 1)[0] for s in bird.species_names])
+# Get all sub-specie names
+species = os.listdir('../data/birds/')[1:]
+
+# Determine main catefories (species)
+main_cat = set([s.split('_', 1)[0] for s in species])
 
 # Create new merged directory with main species
 os.makedirs("../data/birds_merged/", exist_ok=True)
 [os.makedirs(f"../data/birds_merged/{mc}", exist_ok=True) for mc in main_cat]
-
-# Get all sub-specie names
-path = "../data/birds/"
-species = os.listdir(path)[1:]
 
 # Move images to merged directory
 for mc in main_cat:
