@@ -2,7 +2,7 @@
 
 ## Ultralytics Tutorial
 
-Followed Ultralytics tutorial (https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data) and trained a yolov5x model on the coco128 dataset for 5 epochs. Then made predictions with an ensemble model (yolov5x, yolov5l, yolov5m, yolov5s) on a video I took of my street with cars, bikes and motorcycles. The result is pretty nice but there is still some noise in the predictions.
+I ollowed the Ultralytics tutorial (https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data) and trained a yolov5x model on the coco128 dataset for 5 epochs. Then made predictions with an ensemble model (yolov5x, yolov5l, yolov5m, yolov5s) on a video I took of my street with cars, bikes and motorcycles. The result is pretty nice but there is still some noise in the predictions.
 
 <p align="center">
   <img width="460" height="300" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/street_vid.gif">
@@ -10,11 +10,9 @@ Followed Ultralytics tutorial (https://github.com/ultralytics/yolov5/wiki/Train-
 
 ## Birds Project
 
-The project intends to build an image detector and classifier for birds while exploring the yolov5 model.
+The project intends to build an instance detector and classifier for birds while exploring the yolov5 model. YOLO models are SSD (Single Shot Detection) models which work by segmenting the input image into many parts to generate anchor boxes, extracting a feature map with a ConvNet (usually VGG16), making a boundary box prediction (regression problem) and computing a score for each class (+1 for background/no object class) all in a single pass. The model thus has to optimize two losses (the regression loss e.g. l2, and the classification loss e.g with a softmax). The IoU (Intersection over Union) metric is usually used in this type of problem to compute the accuracy of bounding box predictions (how much overlap between the predicted bb and the ground truth bb). This architecture is suitable for real-time detection as it is much faster by discarding the RPN (Region Proposal Network) present in the (Fast/Faster) R-CNN model.
 
-I put together a scraper to get images from https://www.ornitho.ch/, a swiss birding database. The images are classified by species (nc=537) and the names can be found in ```species.txt```.
-
-
+I put together a scraper to get images from https://www.ornitho.ch/, a swiss birding database. The images are classified by species (nc=537, n=35'140) and the names can be found in ```species.txt```.
 
 <p align="center">
   <img width="460" height="460" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/mosaic.jpg">
