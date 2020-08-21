@@ -12,6 +12,8 @@ I ollowed the Ultralytics tutorial (https://github.com/ultralytics/yolov5/wiki/T
 
 The project intends to build an instance detector and classifier for birds while exploring the yolov5 model. YOLO models are SSD (Single Shot Detection) models which work by segmenting the input image into many parts to generate anchor boxes, extracting a feature map with a ConvNet (usually VGG16), making a boundary box prediction (regression problem) and computing a score for each class (+1 for background/no object class) all in a single pass. The model thus has to optimize two losses (the regression loss e.g. l2, and the classification loss e.g with a softmax). The IoU (Intersection over Union) metric is usually used in this type of problem to compute the accuracy of bounding box predictions (how much overlap between the predicted bb and the ground truth bb). This architecture is suitable for real-time detection as it is much faster by discarding the RPN (Region Proposal Network) present in the (Fast/Faster) R-CNN model.
 
+### Data
+
 I put together a scraper to get images from https://www.ornitho.ch/, a swiss birding database. The images are classified by species (nc=537, n=35'140) and the names can be found in ```species.txt```.
 
 <p align="center">
