@@ -1,0 +1,7 @@
+0: Accenteur
+1: Aigle
+2: Aigrette
+3: Alouette
+4: Araguira
+5: Astrild
+6: Autour
