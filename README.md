@@ -40,3 +40,9 @@ Training a yolov5s model for 5 epochs gives the following predictions. The confi
 </p>
 
 I am currently training a yolov5x model for 30 epochs on GPU with approx. 1000 images divided into 8 classes. If this model performs well, I will use it to do some "active learning", that is to predict bounding boxes for the rest of the dataset (~34'000 images remaining...). Bounding box predictions with a confidence above a certain threshold will be automatically considered ground truths, and those below will be submitted for manual verification. Once the bounding boxes are considered good enough, it is easy to associate the correct label to the image.
+
+## Professional Cycling Jersey Detection
+
+The project intends to build an object detector to quickly detect the race leader or other jersey wearer's in the peloton. Anybody who has watched a cycling race on TV knows that this is a difficult task and requires good eyes to distinguish one rider in a pack of 150 riders.
+
+The first part of this project will focus on detecting the race leader of a single race based on TV footage.
