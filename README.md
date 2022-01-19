@@ -45,7 +45,7 @@ I am currently training a yolov5x model for 30 epochs on GPU with approx. 1000 i
 
 The project intends to build an object detector to quickly detect the race leader or other jersey wearer's in the peloton. Anybody who has watched a cycling race on TV knows that this is a difficult task and requires good eyes to distinguish one rider in a pack of 150 riders.
 
-The first part of this project will focus on detecting the race leader of a single race based on TV footage screenshots. This first step will use a supervised learning approach with manually labeled images. Since this task is time consuming, object detection will be tested at a small scale. In a second step, it will be interesting to apply a self-supervised vision transformer for object detection (eg. DINO) in video feeds.
+The first part of this project will focus on detecting the race leader of a single race based on TV footage screenshots. This first step will use a supervised learning approach (Detectron2) with manually labeled images. Since this task is time consuming, object detection will be tested at a small scale. In a second step, it will be interesting to apply a self-supervised vision transformer for object detection (eg. DINO) in video feeds.
 
 <p align="center">
   <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/media/tour_leader.jpg">
