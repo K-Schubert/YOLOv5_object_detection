@@ -5,7 +5,7 @@
 I followed the Ultralytics tutorial (https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data) and trained a yolov5x model on the coco128 dataset for 5 epochs. Then made predictions with an ensemble model (yolov5x, yolov5l, yolov5m, yolov5s) on a video I took of my street with cars, bikes and motorcycles. The result is pretty nice but there is still some noise in the predictions.
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/street_vid.gif">
+  <img width="460" height="300" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/media/street_vid.gif">
 </p>
 
 ## Birds Project
@@ -17,7 +17,7 @@ The project intends to build an object detector and classifier for birds while e
 I put together a scraper to get images from https://www.ornitho.ch/, a swiss birding database. The images are classified by species (nc=537, n=35'140) and the names can be found in ```species.txt```. The class encoding can be found in ```classes.txt```.
 
 <p align="center">
-  <img width="460" height="460" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/mosaic.jpg">
+  <img width="460" height="460" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/media/mosaic.jpg">
 </p>
 
 ### Modelling Approach
@@ -35,8 +35,8 @@ The training data was created using https://www.makesense.ai/ (to draw the bound
 Training a yolov5s model for 5 epochs gives the following predictions. The confidence score is low and many other test images are not correctly classified. 
 
 <p align="center">
-  <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/yolov5s_5epochs_accenteur.jpg">
-  <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/yolov5s_5epochs_aigle.jpg">
+  <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/media/yolov5s_5epochs_accenteur.jpg">
+  <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/media/yolov5s_5epochs_aigle.jpg">
 </p>
 
 I am currently training a yolov5x model for 30 epochs on GPU with approx. 1000 images divided into 8 classes. If this model performs well, I will use it to do some "active learning", that is to predict bounding boxes for the rest of the dataset (~34'000 images remaining...). Bounding box predictions with a confidence above a certain threshold will be automatically considered ground truths, and those below will be submitted for manual verification. Once the bounding boxes are considered good enough, it is easy to associate the correct label to the image.
@@ -48,5 +48,5 @@ The project intends to build an object detector to quickly detect the race leade
 The first part of this project will focus on detecting the race leader of a single race based on TV footage screenshots. This first step will use a supervised learning approach with manually labeled images. Since this task is time consuming, object detection will be tested at a small scale. In a second step, it will be interesting to apply a self-supervised vision transformer for object detection (eg. DINO) in video feeds.
 
 <p align="center">
-  <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/plots/tour_leader.jpg">
+  <img width="350" height="350" src="https://github.com/K-Schubert/YOLOv5_object_detection/blob/master/media/tour_leader.jpg">
 </p>
